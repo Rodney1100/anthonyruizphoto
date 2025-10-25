@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Camera } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navItems = [
     { path: "/", label: "HOME" },
@@ -17,17 +19,43 @@ export default function Header() {
     { path: "/contact", label: "CONTACT" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Close menu if scrolling
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+      
+      // Show/hide header based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setIsVisible(false);
+      } else {
+        // Scrolling up
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, mobileMenuOpen]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-3 cursor-pointer hover-elevate active-elevate-2 px-3 py-2 rounded-md">
-              <Camera className="w-8 h-8 text-primary" />
-              <div className="flex flex-col">
-                <span className="text-xl font-semibold tracking-tight">ANTHONY RUIZ</span>
-                <span className="text-xs text-muted-foreground tracking-wider">PHOTOGRAPHY</span>
-              </div>
+            <div className="flex flex-col cursor-pointer hover-elevate active-elevate-2 px-3 py-2 rounded-md">
+              <span className="text-xl font-semibold tracking-tight">ANTHONY RUIZ PHOTOGRAPHY</span>
+              <span className="text-xs text-muted-foreground tracking-wider">REAL ESTATE MEDIA</span>
             </div>
           </Link>
 

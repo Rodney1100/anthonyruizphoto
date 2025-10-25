@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Camera, MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -7,12 +7,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <Camera className="w-8 h-8 text-primary" />
-              <div className="flex flex-col">
-                <span className="text-xl font-semibold tracking-tight">ANTHONY RUIZ</span>
-                <span className="text-xs text-muted-foreground tracking-wider">PHOTOGRAPHY</span>
-              </div>
+            <div className="flex flex-col mb-6">
+              <span className="text-xl font-semibold tracking-tight">ANTHONY RUIZ PHOTOGRAPHY</span>
+              <span className="text-xs text-muted-foreground tracking-wider">REAL ESTATE MEDIA</span>
             </div>
             <p className="text-base text-muted-foreground leading-loose">
               Professional real estate photography and video services in South Florida. 24-hour

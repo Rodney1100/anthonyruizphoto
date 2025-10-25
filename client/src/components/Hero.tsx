@@ -1,29 +1,55 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 interface HeroProps {
-  backgroundImage: string;
+  backgroundImage?: string;
+  backgroundImages?: string[];
   headline: string;
   subheadline?: string;
   showCTAs?: boolean;
   height?: "full" | "partial";
+  autoSlide?: boolean;
+  slideInterval?: number;
 }
 
 export default function Hero({
   backgroundImage,
+  backgroundImages,
   headline,
   subheadline,
   showCTAs = true,
   height = "full",
+  autoSlide = false,
+  slideInterval = 5000,
 }: HeroProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = backgroundImages || (backgroundImage ? [backgroundImage] : []);
+
+  useEffect(() => {
+    if (autoSlide && images.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, slideInterval);
+      return () => clearInterval(interval);
+    }
+  }, [autoSlide, images.length, slideInterval]);
+
   return (
-    <div
-      className={`relative w-full ${height === "full" ? "h-screen" : "h-[60vh]"} flex items-center justify-center`}
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className={`relative w-full ${height === "full" ? "h-screen" : "h-[60vh]"} flex items-center justify-center overflow-hidden`}>
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentImageIndex ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url(${image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      ))}
+      
       <div className="max-w-5xl mx-auto px-6 text-center z-10">
         <h1
           className="text-4xl md:text-6xl font-semibold tracking-tight text-white mb-6"
@@ -67,6 +93,23 @@ export default function Hero({
           </div>
         )}
       </div>
+
+      {images.length > 1 && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                index === currentImageIndex
+                  ? "bg-white w-8"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+              data-testid={`slider-dot-${index}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

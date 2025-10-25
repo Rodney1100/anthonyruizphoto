@@ -3,7 +3,11 @@ import ServiceCard from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 
-import heroImage from "@assets/generated_images/Luxury_pool_home_hero_2147bcbc.png";
+import heroImage1 from "@assets/generated_images/Luxury_pool_home_hero_2147bcbc.png";
+import heroImage2 from "@assets/generated_images/Twilight_exterior_photography_showcase_d1f7338e.png";
+import heroImage3 from "@assets/generated_images/Aerial_waterfront_property_drone_c94182fa.png";
+import heroImage4 from "@assets/generated_images/Waterfront_mansion_sunset_hero_e98aa446.png";
+import heroImage5 from "@assets/generated_images/Beachfront_villa_aerial_hero_b3a9f476.png";
 import interiorImage from "@assets/generated_images/Luxury_living_room_interior_f9f61881.png";
 import droneImage from "@assets/generated_images/Aerial_waterfront_property_drone_c94182fa.png";
 import twilightImage from "@assets/generated_images/Twilight_exterior_photography_showcase_d1f7338e.png";
@@ -12,6 +16,7 @@ import kitchenImage from "@assets/generated_images/Luxury_modern_kitchen_interio
 import resortImage from "@assets/generated_images/Resort-style_residential_outdoor_area_61faf604.png";
 
 export default function Home() {
+  const heroImages = [heroImage1, heroImage2, heroImage3, heroImage4, heroImage5];
   const services = [
     {
       title: "Real Estate Photography",
@@ -48,11 +53,13 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Hero
-        backgroundImage={heroImage}
+        backgroundImages={heroImages}
         headline="IMAGES THAT IMPACT"
         subheadline="Professional Real Estate Media | Interior & Exterior Photography | Aerial & Drone Video"
         showCTAs={true}
         height="full"
+        autoSlide={true}
+        slideInterval={5000}
       />
 
       <section id="services" className="max-w-7xl mx-auto px-6 py-24">
