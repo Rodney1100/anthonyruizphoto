@@ -46,26 +46,26 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/98 backdrop-blur-xl border-b border-border/50 transition-all duration-500 ease-out ${
+        isVisible ? "translate-y-0 shadow-sm" : "-translate-y-full"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-24">
           <Link href="/" data-testid="link-home">
-            <div className="flex flex-col cursor-pointer hover-elevate active-elevate-2 px-3 py-2 rounded-md">
-              <span className="text-xl font-semibold tracking-tight">ANTHONY RUIZ PHOTOGRAPHY</span>
-              <span className="text-xs text-muted-foreground tracking-wider">REAL ESTATE MEDIA</span>
+            <div className="flex flex-col cursor-pointer transition-all duration-300 px-4 py-3 rounded-sm hover:bg-muted/30">
+              <span className="text-lg font-semibold tracking-wide">ANTHONY RUIZ PHOTOGRAPHY</span>
+              <span className="text-[10px] text-muted-foreground tracking-[0.2em] mt-0.5">REAL ESTATE MEDIA</span>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-2">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}>
                 <Button
                   variant="ghost"
-                  className={`text-sm tracking-wider ${
-                    location === item.path ? "text-primary" : ""
+                  className={`text-xs tracking-[0.15em] font-medium transition-all duration-300 ${
+                    location === item.path ? "text-foreground bg-muted/40" : "text-muted-foreground"
                   }`}
                   data-testid={`link-nav-${item.label.toLowerCase()}`}
                 >
@@ -82,7 +82,7 @@ export default function Header() {
               rel="noopener noreferrer"
               data-testid="button-book-now"
             >
-              <Button variant="default" size="default">
+              <Button variant="default" size="default" className="tracking-[0.1em] text-xs font-medium">
                 BOOK NOW
               </Button>
             </a>

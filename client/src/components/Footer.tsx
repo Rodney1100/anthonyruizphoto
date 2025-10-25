@@ -21,29 +21,29 @@ export default function Footer() {
             <h3 className="text-lg font-semibold uppercase tracking-wider mb-6">Quick Links</h3>
             <nav className="flex flex-col gap-3">
               <Link href="/services">
-                <a className="text-base text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-services">
+                <span className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-testid="link-footer-services">
                   Services
-                </a>
+                </span>
               </Link>
               <Link href="/gallery">
-                <a className="text-base text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-gallery">
+                <span className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-testid="link-footer-gallery">
                   Gallery
-                </a>
+                </span>
               </Link>
               <Link href="/pricing">
-                <a className="text-base text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-pricing">
+                <span className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-testid="link-footer-pricing">
                   Pricing
-                </a>
+                </span>
               </Link>
               <Link href="/faq">
-                <a className="text-base text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-faq">
+                <span className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-testid="link-footer-faq">
                   FAQ
-                </a>
+                </span>
               </Link>
               <Link href="/contact">
-                <a className="text-base text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-contact">
+                <span className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer" data-testid="link-footer-contact">
                   Contact
-                </a>
+                </span>
               </Link>
             </nav>
           </div>

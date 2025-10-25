@@ -62,49 +62,49 @@ export default function Home() {
         slideInterval={5000}
       />
 
-      <section id="services" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold uppercase tracking-wide mb-4" data-testid="text-services-heading">
+      <section id="services" className="max-w-7xl mx-auto px-6 lg:px-8 py-32">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl md:text-4xl font-semibold uppercase tracking-[0.15em] mb-6" data-testid="text-services-heading">
             Our Services
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed" style={{ letterSpacing: "0.01em" }}>
             Comprehensive real estate media services designed to help your properties sell faster
             and for higher prices.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
         </div>
       </section>
 
-      <section className="max-w-screen-2xl mx-auto px-6 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+      <section className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1">
             <img
               src={commercialImage}
               alt="Featured Work"
-              className="w-full rounded-md"
+              className="w-full rounded-sm shadow-md"
               data-testid="image-featured-work"
             />
           </div>
-          <div>
-            <h2 className="text-4xl font-semibold uppercase tracking-wide mb-6" data-testid="text-why-choose-heading">
+          <div className="order-1 lg:order-2">
+            <h2 className="text-3xl md:text-4xl font-semibold uppercase tracking-[0.15em] mb-8" data-testid="text-why-choose-heading">
               Why Choose Us
             </h2>
-            <p className="text-lg text-muted-foreground leading-loose mb-8">
+            <p className="text-base text-muted-foreground leading-relaxed mb-10" style={{ letterSpacing: "0.01em" }}>
               With years of experience in South Florida's competitive real estate market, we
               understand what it takes to make properties stand out. Our combination of professional
               equipment, technical expertise, and artistic vision delivers results that exceed
               expectations.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-5">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3" data-testid={`feature-item-${index}`}>
-                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span className="text-base text-foreground">{feature}</span>
+                <div key={index} className="flex items-start gap-4" data-testid={`feature-item-${index}`}>
+                  <CheckCircle className="w-5 h-5 text-foreground mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-foreground" style={{ letterSpacing: "0.01em" }}>{feature}</span>
                 </div>
               ))}
             </div>
@@ -112,21 +112,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="max-w-screen-2xl mx-auto px-6 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="aspect-[4/3] overflow-hidden rounded-md">
+      <section className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
             <img
               src={kitchenImage}
               alt="Interior Photography"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               data-testid="image-showcase-1"
             />
           </div>
-          <div className="aspect-[4/3] overflow-hidden rounded-md">
+          <div className="aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
             <img
               src={resortImage}
               alt="Exterior Photography"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               data-testid="image-showcase-2"
             />
           </div>
@@ -134,19 +134,19 @@ export default function Home() {
       </section>
 
       <section
-        className="relative w-full py-32"
+        className="relative w-full py-40"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(${twilightImage})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url(${twilightImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6" data-testid="text-cta-heading">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-8" data-testid="text-cta-heading" style={{ letterSpacing: "-0.01em" }}>
             Ready to Elevate Your Listings?
           </h2>
-          <p className="text-xl text-white/90 leading-relaxed mb-8">
+          <p className="text-base md:text-lg text-white/80 leading-relaxed mb-12 font-light" style={{ letterSpacing: "0.02em" }}>
             Book your shoot today and get professional photos delivered within 24 hours.
           </p>
           <a
@@ -156,9 +156,8 @@ export default function Home() {
             data-testid="button-cta-book"
           >
             <Button
-              variant="default"
               size="lg"
-              className="backdrop-blur-md bg-primary/90 hover:bg-primary border-primary-border"
+              className="backdrop-blur-xl bg-white text-foreground hover:bg-white/90 border-white/20 shadow-2xl tracking-[0.1em] text-xs font-semibold px-10 py-7"
             >
               BOOK NOW
             </Button>

@@ -9,23 +9,23 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ title, description, image, pricing }: ServiceCardProps) {
   return (
-    <Card className="overflow-hidden hover-elevate cursor-pointer" data-testid={`card-service-${title.toLowerCase().replace(/\s+/g, '-')}`}>
-      <div className="aspect-[3/2] overflow-hidden">
+    <Card className="overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-lg group border-border/50" data-testid={`card-service-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+      <div className="aspect-[3/2] overflow-hidden bg-muted/20">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
         />
       </div>
-      <CardContent className="p-6">
-        <h3 className="text-2xl font-semibold uppercase tracking-wide mb-3" data-testid={`text-service-title-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+      <CardContent className="p-8">
+        <h3 className="text-xl font-semibold uppercase tracking-[0.15em] mb-4" style={{ letterSpacing: "0.1em" }} data-testid={`text-service-title-${title.toLowerCase().replace(/\s+/g, '-')}`}>
           {title}
         </h3>
-        <p className="text-base text-muted-foreground leading-loose mb-4" data-testid={`text-service-description-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-5" style={{ letterSpacing: "0.01em" }} data-testid={`text-service-description-${title.toLowerCase().replace(/\s+/g, '-')}`}>
           {description}
         </p>
         {pricing && (
-          <p className="text-sm text-primary font-medium tracking-wider" data-testid={`text-service-pricing-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+          <p className="text-xs text-foreground font-semibold tracking-[0.15em]" data-testid={`text-service-pricing-${title.toLowerCase().replace(/\s+/g, '-')}`}>
             {pricing}
           </p>
         )}
