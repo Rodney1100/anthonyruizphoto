@@ -1,0 +1,94 @@
+Project Brief
+Build a new website for the client that:
+
+Uses the style, layout, and feel of the “Education” page on the Halkin Mason Photography website (https://www.halkinmasonphotography.com/education
+)
+
+Incorporates all of the information from the current site of Anthony Ruiz Photography (https://www.anthonyruizphoto.com/
+)
+
+Design / Style Requirements
+
+Clean, modern, gallery-first layout as seen on Halkin Mason’s “Education” page.
+
+Large leading images, minimal distractions, strong visual emphasis.
+
+Navigation structure similar to Halkin Mason: e.g., main menu at top, portfolio sections, about/contact.
+
+Typography and spacing consistent with high-end photography sites (ample white space, large headings).
+
+Use of high-quality photography thumbnails and full-width hero images.
+
+Smooth transitions or hover effects for portfolio items (optional but recommended).
+
+Mobile-responsive design, optimized for tablets and phones.
+
+Content Requirements
+From Anthony Ruiz Photography site extract and include:
+
+Business name: Anthony Ruiz Photography
+
+Tagline: Real Estate Media / Interior & Exterior Photography (and Aerial / Drone Video)
+
+Services: Real estate photography, commercial real-estate photography, drone gallery, 4K video, Matterport/3D tours, twilight shoots, virtual twilights, retouching/HDR, etc. (as listed on the site)
+
+FAQs section (questions like: How long shoot takes? What if weather isn’t ideal? When will the photos be ready? Can you shoot twilight? Do you offer editing/retouching? How far in advance to book?)
+
+Call to Action: Book now / Contact us for a quote
+
+Gallery sections: Real Estate Gallery, Commercial RE Gallery, Drone Gallery, 4K Video
+
+Pricing page link (or page)
+
+“About” or short business overview: mention “professional real estate photography and video services in South Florida” and “24 hour turnaround, competitive pricing, professional equipment and Part 107 certified” (as per the site)
+
+Contact details / Booking link: e.g., “Book now” link to listings.anthonyruizphoto.com
+
+Use of hero heading: “Images that Impact” (or something similar)
+
+Use of example images/backgrounds similar to those shown on Anthony Ruiz site (poolside area, modern living room, aerial views) as placeholders or reference.
+
+Structure / Pages
+Suggested page structure (based on Halkin Mason + your content):
+
+Home — hero image, tagline, short intro, key services, CTA “Book Now”
+
+Services — separate sections for: Real Estate Photography, Commercial Real Estate, Drone & Aerial Video, 3D/Matterport Tours, Twilight/Virtual Twilight, Retouching & Editing
+
+Gallery / Portfolio — categories: Real Estate Gallery, Commercial RE Gallery, Drone Gallery, 4K Video. Each category has thumbnail grid with light-box or link to full project.
+
+Pricing — outline packages and/or custom quote option.
+
+FAQs — provide the FAQ items above.
+
+About — overview of the business, credentials (Part 107 certified drone pilot, 24-hour turnaround, South Florida focus)
+
+Contact / Book — booking link, contact form or contact details.
+
+Technical / Functional
+
+Use a CMS or website builder that supports gallery grids, lightbox, responsive behavior.
+
+Ensure fast performance (optimize images) and good SEO (descriptive headings, alt tags).
+
+Include a clear bookings / contact CTA on every page (e.g., header or sticky button).
+
+Analytics & tracking (Google Analytics or similar) for visitor behavior.
+
+Accessibility best practices (alt text, contrast, keyboard navigation).
+
+Optional: integrate Matterport or similar 3D tour links if available.
+
+Deliverables
+
+Wireframes/mockups for desktop and mobile views.
+
+Full site with all above pages, content transferred and styled.
+
+Image assets optimized and properly placed.
+
+Working booking/contact functionality.
+
+Deployment to client’s domain with proper SSL certificate.
+
+Training or documentation for client to update gallery, add new images.
