@@ -35,19 +35,35 @@ export default function Hero({
   }, [autoSlide, images.length, slideInterval]);
 
   return (
-    <div className={`relative w-full ${height === "full" ? "h-screen" : "h-[60vh]"} flex items-center justify-center overflow-hidden`}>
+    <div className={`relative w-full ${height === "full" ? "h-screen" : "h-[60vh]"} flex items-center justify-center overflow-hidden bg-black`}>
       {images.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-[1500ms] ease-out ${
-            index === currentImageIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
-          }`}
+          className="absolute inset-0"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url(${image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            opacity: index === currentImageIndex ? 1 : 0,
+            transition: 'opacity 2000ms cubic-bezier(0.4, 0, 0.2, 1)',
+            willChange: 'opacity',
           }}
-        />
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              transform: index === currentImageIndex ? 'scale(1)' : 'scale(1.05)',
+              transition: 'transform 8000ms cubic-bezier(0.4, 0, 0.2, 1)',
+              willChange: 'transform',
+            }}
+          />
+          <div 
+            className="absolute inset-0" 
+            style={{
+              background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4))',
+            }}
+          />
+        </div>
       ))}
       
       <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center z-10">
