@@ -33,9 +33,15 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-foreground focus:text-background focus:px-6 focus:py-3 focus:rounded-md focus:font-bold focus:text-base focus:ring-4 focus:ring-white focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
         <div className="min-h-screen flex flex-col">
           <Header />
-          <main className="flex-1 pt-20">
+          <main id="main-content" className="flex-1 pt-20" role="main">
             <Router />
           </main>
           <Footer />

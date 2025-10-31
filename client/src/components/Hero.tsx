@@ -84,26 +84,27 @@ export default function Hero({
           </p>
         )}
         {showCTAs && (
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a
               href="https://listings.anthonyruizphoto.com"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="button-hero-book"
+              aria-label="Book a photography shoot - Opens in new window"
             >
               <Button
                 variant="default"
                 size="lg"
-                className="backdrop-blur-xl bg-white text-foreground hover:bg-white/90 border-white/20 shadow-xl tracking-[0.1em] text-xs font-semibold px-8 py-6"
+                className="backdrop-blur-xl bg-white text-black hover:bg-white/95 border-2 border-white shadow-2xl tracking-[0.08em] text-base font-bold px-12 py-4 focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-4"
               >
                 BOOK A SHOOT
               </Button>
             </a>
-            <a href="#services" data-testid="link-hero-services">
+            <a href="#services" data-testid="link-hero-services" aria-label="View our photography services">
               <Button
                 variant="outline"
                 size="lg"
-                className="backdrop-blur-xl bg-transparent border-white/40 text-white hover:bg-white/10 hover:border-white/60 shadow-lg tracking-[0.1em] text-xs font-semibold px-8 py-6 transition-all duration-300"
+                className="backdrop-blur-xl bg-white/10 border-2 border-white text-white hover:bg-white/20 hover:border-white shadow-xl tracking-[0.08em] text-base font-bold px-12 py-4 focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-4 transition-all duration-300"
               >
                 VIEW SERVICES
               </Button>
@@ -113,18 +114,19 @@ export default function Hero({
       </div>
 
       {images.length > 1 && (
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex gap-3 z-20" role="group" aria-label="Image slider navigation">
           {images.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentImageIndex(index)}
-              className={`h-1 rounded-full transition-all duration-500 ${
+              className={`h-1.5 rounded-full transition-all duration-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/50 ${
                 index === currentImageIndex
-                  ? "bg-white w-10"
-                  : "bg-white/40 hover:bg-white/60 w-10"
+                  ? "bg-white w-12"
+                  : "bg-white/50 hover:bg-white/70 w-12"
               }`}
               data-testid={`slider-dot-${index}`}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={`Go to slide ${index + 1} of ${images.length}`}
+              aria-current={index === currentImageIndex ? "true" : "false"}
             />
           ))}
         </div>

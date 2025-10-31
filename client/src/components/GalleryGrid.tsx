@@ -102,11 +102,12 @@ export default function GalleryGrid({ images, columns = 3 }: GalleryGridProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute top-6 right-6 text-white hover:bg-white/10 transition-all duration-300 z-50"
+            className="absolute top-6 right-6 text-white hover:bg-white/20 transition-all duration-300 z-50 focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             onClick={closeLightbox}
             data-testid="button-close-lightbox"
+            aria-label="Close image viewer"
           >
-            <X className="w-7 h-7" />
+            <X className="w-8 h-8" />
           </Button>
 
           {/* Previous Button */}
@@ -114,11 +115,12 @@ export default function GalleryGrid({ images, columns = 3 }: GalleryGridProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 transition-all duration-300 z-50 h-14 w-14"
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 transition-all duration-300 z-50 h-14 w-14 focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               onClick={goToPrevious}
               data-testid="button-previous-image"
+              aria-label="Previous image"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <ChevronLeft className="w-9 h-9" />
             </Button>
           )}
 
@@ -127,11 +129,12 @@ export default function GalleryGrid({ images, columns = 3 }: GalleryGridProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 transition-all duration-300 z-50 h-14 w-14"
+              className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 transition-all duration-300 z-50 h-14 w-14 focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               onClick={goToNext}
               data-testid="button-next-image"
+              aria-label="Next image"
             >
-              <ChevronRight className="w-8 h-8" />
+              <ChevronRight className="w-9 h-9" />
             </Button>
           )}
 
@@ -151,7 +154,11 @@ export default function GalleryGrid({ images, columns = 3 }: GalleryGridProps) {
 
           {/* Image Counter */}
           {images.length > 1 && (
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/80 text-sm tracking-wider">
+            <div 
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/90 text-base tracking-wider font-medium"
+              aria-live="polite"
+              aria-atomic="true"
+            >
               {currentIndex + 1} / {images.length}
             </div>
           )}

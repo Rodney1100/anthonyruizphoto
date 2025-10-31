@@ -46,28 +46,37 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 bg-background/98 backdrop-blur-xl border-b border-border/50 transition-all duration-500 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/98 backdrop-blur-xl border-b border-border transition-all duration-500 ease-out ${
         isVisible ? "translate-y-0 shadow-sm" : "-translate-y-full"
       }`}
+      role="banner"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-28">
           <Link href="/" data-testid="link-home">
-            <div className="flex flex-col cursor-pointer transition-all duration-300 px-4 py-3 rounded-sm hover:bg-muted/30">
-              <span className="text-lg font-semibold tracking-wide">ANTHONY RUIZ PHOTOGRAPHY</span>
-              <span className="text-[10px] text-muted-foreground tracking-[0.2em] mt-0.5">REAL ESTATE MEDIA</span>
+            <div 
+              className="flex flex-col cursor-pointer transition-all duration-300 px-4 py-3 rounded-sm hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground focus-visible:ring-offset-2"
+              tabIndex={0}
+              role="link"
+              aria-label="Anthony Ruiz Photography - Return to homepage"
+            >
+              <span className="text-xl font-bold tracking-wide">ANTHONY RUIZ PHOTOGRAPHY</span>
+              <span className="text-xs text-foreground tracking-[0.2em] mt-1">REAL ESTATE MEDIA</span>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-2">
+          <nav className="hidden lg:flex items-center gap-3" aria-label="Main navigation" role="navigation">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}>
                 <Button
                   variant="ghost"
-                  className={`text-xs tracking-[0.15em] font-medium transition-all duration-300 ${
-                    location === item.path ? "text-foreground bg-muted/40" : "text-muted-foreground"
+                  size="sm"
+                  className={`text-sm tracking-[0.1em] font-bold transition-all duration-300 ${
+                    location === item.path ? "text-foreground bg-muted border-foreground" : "text-foreground"
                   }`}
                   data-testid={`link-nav-${item.label.toLowerCase()}`}
+                  aria-label={`Navigate to ${item.label}`}
+                  aria-current={location === item.path ? "page" : undefined}
                 >
                   {item.label}
                 </Button>
@@ -81,8 +90,9 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="button-book-now"
+              aria-label="Book a photography shoot - Opens in new window"
             >
-              <Button variant="default" size="default" className="tracking-[0.1em] text-xs font-medium">
+              <Button variant="default" size="default" className="tracking-[0.08em] text-sm font-bold">
                 BOOK NOW
               </Button>
             </a>
@@ -91,27 +101,38 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden"
+            className="lg:hidden text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="button-mobile-menu"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </Button>
         </div>
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <nav className="flex flex-col p-6 gap-2">
+        <div 
+          className="lg:hidden bg-background border-t border-border" 
+          id="mobile-navigation"
+          role="navigation"
+          aria-label="Mobile navigation menu"
+        >
+          <nav className="flex flex-col p-6 gap-3">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}>
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start text-sm tracking-wider ${
-                    location === item.path ? "text-primary" : ""
+                  size="default"
+                  className={`w-full justify-start text-base tracking-wide font-bold ${
+                    location === item.path ? "text-foreground bg-muted border-foreground" : "text-foreground"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                   data-testid={`link-mobile-${item.label.toLowerCase()}`}
+                  aria-label={`Navigate to ${item.label}`}
+                  aria-current={location === item.path ? "page" : undefined}
                 >
                   {item.label}
                 </Button>
@@ -121,10 +142,11 @@ export default function Header() {
               href="https://listings.anthonyruizphoto.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4"
+              className="mt-6"
               data-testid="button-mobile-book-now"
+              aria-label="Book a photography shoot - Opens in new window"
             >
-              <Button variant="default" className="w-full">
+              <Button variant="default" size="lg" className="w-full tracking-[0.08em] font-bold">
                 BOOK NOW
               </Button>
             </a>
