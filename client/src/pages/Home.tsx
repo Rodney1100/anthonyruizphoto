@@ -62,10 +62,9 @@ export default function Home() {
         slideInterval={5000}
       />
 
-      <section id="services" className="max-w-7xl mx-auto px-6 lg:px-8 py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 -z-10 rounded-3xl" />
+      <section id="services" className="max-w-7xl mx-auto px-6 lg:px-8 py-32">
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-semibold uppercase tracking-[0.15em] mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent" data-testid="text-services-heading">
+          <h2 className="text-3xl md:text-4xl font-semibold uppercase tracking-[0.15em] mb-6" data-testid="text-services-heading">
             Our Services
           </h2>
           <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed" style={{ letterSpacing: "0.01em" }}>
@@ -103,9 +102,9 @@ export default function Home() {
             </p>
             <div className="grid grid-cols-1 gap-5">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4 bg-primary/5 p-4 rounded-lg hover:bg-primary/10 transition-colors duration-300" data-testid={`feature-item-${index}`}>
+                <div key={index} className="flex items-start gap-4" data-testid={`feature-item-${index}`}>
                   <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-foreground font-medium" style={{ letterSpacing: "0.01em" }}>{feature}</span>
+                  <span className="text-sm text-foreground" style={{ letterSpacing: "0.01em" }}>{feature}</span>
                 </div>
               ))}
             </div>
@@ -157,10 +156,11 @@ export default function Home() {
             data-testid="button-cta-book"
           >
             <Button
+              variant="default"
               size="lg"
-              className="backdrop-blur-xl bg-white text-foreground hover:bg-white/90 border-white/20 shadow-2xl tracking-[0.1em] text-xs font-semibold px-10 py-7"
+              className="backdrop-blur-sm shadow-2xl tracking-[0.1em] text-base font-bold px-12 py-4"
             >
-              BOOK NOW
+              BOOK A CONSULTATION
             </Button>
           </a>
         </div>

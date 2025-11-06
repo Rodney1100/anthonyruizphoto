@@ -11,12 +11,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground border-2 border-primary shadow-md",
+          "bg-primary text-primary-foreground border-2 border-primary shadow-lg",
         destructive:
           "bg-destructive text-destructive-foreground border-2 border-destructive shadow-md",
         outline:
           "border-2 [border-color:var(--button-outline)] shadow-xs active:shadow-none ",
-        secondary: "border-2 bg-accent text-accent-foreground border-accent shadow-sm ",
+        secondary: "border-2 bg-secondary text-secondary-foreground border-secondary shadow-sm ",
         ghost: "border-2 border-transparent",
       },
       size: {

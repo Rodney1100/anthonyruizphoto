@@ -95,16 +95,16 @@ export default function Hero({
               <Button
                 variant="default"
                 size="lg"
-                className="backdrop-blur-xl shadow-2xl tracking-[0.08em] text-base font-bold px-12 py-4 focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-4"
+                className="backdrop-blur-sm tracking-[0.08em] text-base font-bold px-12 py-4 focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-4"
               >
-                BOOK A SHOOT
+                BOOK A SESSION
               </Button>
             </a>
             <a href="#services" data-testid="link-hero-services" aria-label="View our photography services">
               <Button
-                variant="secondary"
+                variant="outline"
                 size="lg"
-                className="backdrop-blur-xl shadow-xl tracking-[0.08em] text-base font-bold px-12 py-4 focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-4 transition-all duration-300"
+                className="backdrop-blur-sm border-primary/40 text-white hover:bg-primary/20 tracking-[0.08em] text-base font-bold px-12 py-4 focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-4 transition-all duration-300"
               >
                 VIEW SERVICES
               </Button>

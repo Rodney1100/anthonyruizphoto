@@ -43,12 +43,16 @@ export default function About() {
         height="partial"
       />
 
-      <section className="max-w-4xl mx-auto px-6 py-24">
-        <div className="prose prose-lg max-w-none">
-          <h2 className="text-4xl font-semibold uppercase tracking-wide text-center mb-12" data-testid="text-mission-heading">
-            Our Mission
-          </h2>
-          <p className="text-lg text-muted-foreground leading-loose text-center mb-16">
+      <section className="bg-foreground py-24">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center justify-center gap-8 mb-12">
+            <div className="w-24 h-0.5 bg-primary" />
+            <h2 className="text-4xl font-semibold uppercase tracking-wide text-center text-background" data-testid="text-mission-heading">
+              Our Mission
+            </h2>
+            <div className="w-24 h-0.5 bg-primary" />
+          </div>
+          <p className="text-lg text-background/80 leading-loose text-center mb-16">
             At Anthony Ruiz Photography, we believe that exceptional real estate photography is
             more than just taking pictures—it's about telling a property's story and creating an
             emotional connection with potential buyers. Our mission is to provide South Florida
@@ -56,7 +60,9 @@ export default function About() {
             sell faster and for top dollar.
           </p>
         </div>
+      </section>
 
+      <section className="max-w-4xl mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
           <div>
             <img
