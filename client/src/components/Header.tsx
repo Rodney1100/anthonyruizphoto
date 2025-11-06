@@ -46,10 +46,13 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 bg-background/98 backdrop-blur-xl border-b border-border transition-all duration-500 ease-out ${
-        isVisible ? "translate-y-0 shadow-sm" : "-translate-y-full"
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-primary/20 shadow-lg transition-all duration-500 ease-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
       role="banner"
+      style={{
+        background: 'linear-gradient(to bottom, hsl(var(--background) / 0.98), hsl(var(--background) / 0.95))'
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-28">
@@ -60,8 +63,8 @@ export default function Header() {
               role="link"
               aria-label="Anthony Ruiz Photography - Return to homepage"
             >
-              <span className="text-xl font-bold tracking-wide">ANTHONY RUIZ PHOTOGRAPHY</span>
-              <span className="text-xs text-foreground tracking-[0.2em] mt-1">REAL ESTATE MEDIA</span>
+              <span className="text-xl font-bold tracking-wide bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">ANTHONY RUIZ PHOTOGRAPHY</span>
+              <span className="text-xs text-primary font-semibold tracking-[0.2em] mt-1">REAL ESTATE MEDIA</span>
             </div>
           </Link>
 
