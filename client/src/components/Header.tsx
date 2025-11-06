@@ -61,7 +61,7 @@ export default function Header() {
               aria-label="Anthony Ruiz Photography - Return to homepage"
             >
               <span className="text-xl font-bold tracking-wide text-foreground">ANTHONY RUIZ PHOTOGRAPHY</span>
-              <span className="text-xs text-muted-foreground tracking-[0.2em] mt-1">REAL ESTATE MEDIA</span>
+              <span className="text-sm text-muted-foreground tracking-[0.2em] mt-1">REAL ESTATE MEDIA</span>
             </div>
           </Link>
 

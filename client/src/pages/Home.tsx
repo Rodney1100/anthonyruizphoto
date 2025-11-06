@@ -104,7 +104,7 @@ export default function Home() {
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-4" data-testid={`feature-item-${index}`}>
                   <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-foreground" style={{ letterSpacing: "0.01em" }}>{feature}</span>
+                  <span className="text-base text-foreground" style={{ letterSpacing: "0.01em" }}>{feature}</span>
                 </div>
               ))}
             </div>

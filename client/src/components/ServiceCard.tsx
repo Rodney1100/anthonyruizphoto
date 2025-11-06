@@ -22,11 +22,11 @@ export default function ServiceCard({ title, description, image, pricing }: Serv
         <h3 className="text-xl font-semibold uppercase tracking-[0.15em] mb-4" style={{ letterSpacing: "0.1em" }} data-testid={`text-service-title-${title.toLowerCase().replace(/\s+/g, '-')}`}>
           {title}
         </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-5" style={{ letterSpacing: "0.01em" }} data-testid={`text-service-description-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+        <p className="text-base text-muted-foreground leading-relaxed mb-5" style={{ letterSpacing: "0.01em" }} data-testid={`text-service-description-${title.toLowerCase().replace(/\s+/g, '-')}`}>
           {description}
         </p>
         {pricing && (
-          <p className="text-xs text-primary font-semibold tracking-[0.15em]" data-testid={`text-service-pricing-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+          <p className="text-sm text-primary font-semibold tracking-[0.15em]" data-testid={`text-service-pricing-${title.toLowerCase().replace(/\s+/g, '-')}`}>
             {pricing}
           </p>
         )}

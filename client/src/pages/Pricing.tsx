@@ -94,7 +94,7 @@ export default function Pricing() {
               data-testid={`card-package-${pkg.name.toLowerCase()}`}
             >
               {pkg.popular && (
-                <div className="bg-primary text-primary-foreground text-center py-2 text-sm font-semibold tracking-wider">
+                <div className="bg-primary text-primary-foreground text-center py-2 text-base font-semibold tracking-wider">
                   MOST POPULAR
                 </div>
               )}
@@ -103,7 +103,7 @@ export default function Pricing() {
                   {pkg.name}
                 </h3>
                 <div className="text-4xl font-bold text-primary mb-2" data-testid={`text-package-price-${pkg.name.toLowerCase()}`}>{pkg.price}</div>
-                <p className="text-sm text-muted-foreground">{pkg.description}</p>
+                <p className="text-base text-muted-foreground">{pkg.description}</p>
               </CardHeader>
               <CardContent className="p-8 pt-0">
                 <ul className="space-y-3">

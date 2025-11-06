@@ -141,7 +141,7 @@ export default function About() {
             Lauderdale, West Palm Beach, Boca Raton, Hollywood, Coral Gables, Aventura, and
             surrounding areas.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-4 text-base text-muted-foreground">
             <span className="px-4 py-2 bg-background rounded-md">Miami</span>
             <span className="px-4 py-2 bg-background rounded-md">Fort Lauderdale</span>
             <span className="px-4 py-2 bg-background rounded-md">West Palm Beach</span>
