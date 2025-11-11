@@ -34,8 +34,8 @@ A luxury photography portfolio website with a comprehensive Content Management S
 ### Backend
 - Node.js + Express
 - TypeScript
-- PostgreSQL (Neon-backed via Replit)
-- Drizzle ORM
+- **PostgreSQL (Railway)** - Migrated from Replit to Railway
+- Drizzle ORM with `pg` driver
 - Replit Auth (OpenID Connect)
 - Multer (file uploads)
 - Stripe (payment processing)
@@ -214,11 +214,14 @@ shared/
 
 ### Database Changes
 ```bash
-# After modifying shared/schema.ts
-npm run db:push
+# After modifying shared/schema.ts, push to Railway database:
+DATABASE_URL="${DATABASE_PUBLIC_URL}" npm run db:push
+
 # Or if needed:
-npm run db:push --force
+DATABASE_URL="${DATABASE_PUBLIC_URL}" npm run db:push --force
 ```
+
+**Note:** We override DATABASE_URL with DATABASE_PUBLIC_URL because drizzle.config.ts reads DATABASE_URL, but in development we need to use the public Railway connection.
 
 ### Running the App
 ```bash
@@ -236,7 +239,8 @@ npm run dev
 7. Production deployment
 
 ## Environment Variables
-- `DATABASE_URL` - PostgreSQL connection string
+- `DATABASE_PUBLIC_URL` - Railway PostgreSQL public connection (development/testing)
+- `DATABASE_URL` - Railway PostgreSQL private connection (production deployment)
 - `SESSION_SECRET` - Session encryption key
 - `REPL_ID` - Replit application ID
 - `ISSUER_URL` - OIDC issuer URL (defaults to Replit)

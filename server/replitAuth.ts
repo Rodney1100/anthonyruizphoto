@@ -20,7 +20,11 @@ const getOidcConfig = memoize(
 export function getSession() {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
   const pgStore = connectPg(session);
-  const databaseUrl = process.env.RAILWAY_DATABASE_URL || process.env.DATABASE_URL;
+  // In development: use DATABASE_PUBLIC_URL, in production: use DATABASE_URL
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const databaseUrl = isDevelopment 
+    ? process.env.DATABASE_PUBLIC_URL 
+    : process.env.DATABASE_URL;
   const sessionStore = new pgStore({
     conString: databaseUrl,
     createTableIfMissing: false,

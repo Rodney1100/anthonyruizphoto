@@ -1,33 +1,22 @@
-import { Pool as NeonPool, neonConfig } from '@neondatabase/serverless';
 import { Pool as PgPool } from 'pg';
-import { drizzle as drizzleNeon } from 'drizzle-orm/neon-serverless';
-import { drizzle as drizzlePg } from 'drizzle-orm/node-postgres';
-import ws from "ws";
+import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from "@shared/schema";
 
-// Determine which database to use
-const railwayUrl = process.env.RAILWAY_DATABASE_URL;
-const neonUrl = process.env.DATABASE_URL;
+// In development: use DATABASE_PUBLIC_URL (public Railway connection for testing)
+// In production: use DATABASE_URL (will be set by Railway deployment)
+const isDevelopment = process.env.NODE_ENV === 'development';
+const databaseUrl = isDevelopment 
+  ? process.env.DATABASE_PUBLIC_URL 
+  : process.env.DATABASE_URL;
 
-if (!railwayUrl && !neonUrl) {
+if (!databaseUrl) {
   throw new Error(
-    "RAILWAY_DATABASE_URL or DATABASE_URL must be set. Did you forget to provision a database?",
+    isDevelopment
+      ? "DATABASE_PUBLIC_URL must be set for development"
+      : "DATABASE_URL must be set for production"
   );
 }
 
-// Use Railway if available, otherwise Neon
-let pool: PgPool | NeonPool;
-let db: ReturnType<typeof drizzlePg> | ReturnType<typeof drizzleNeon>;
-
-if (railwayUrl) {
-  // Railway uses standard PostgreSQL
-  pool = new PgPool({ connectionString: railwayUrl });
-  db = drizzlePg({ client: pool, schema });
-} else {
-  // Neon uses WebSocket-based connection
-  neonConfig.webSocketConstructor = ws;
-  pool = new NeonPool({ connectionString: neonUrl! });
-  db = drizzleNeon({ client: pool, schema });
-}
-
-export { pool, db };
+// Railway uses standard PostgreSQL
+export const pool = new PgPool({ connectionString: databaseUrl });
+export const db = drizzle({ client: pool, schema });
