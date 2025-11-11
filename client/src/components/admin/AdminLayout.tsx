@@ -2,6 +2,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest, queryClient } from "@/lib/queryClient";
 import {
   Sidebar,
   SidebarContent,
@@ -79,6 +81,32 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   
   const typedUser = user as any;
 
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      await apiRequest("POST", "/api/logout", {});
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/auth/user"] });
+      toast({
+        title: "Logged out",
+        description: "You have been successfully logged out.",
+      });
+      setLocation("/login");
+    },
+    onError: () => {
+      toast({
+        variant: "destructive",
+        title: "Logout failed",
+        description: "Please try again.",
+      });
+    },
+  });
+
+  const handleLogout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    logoutMutation.mutate();
+  };
+
   // Redirect to login if not authenticated
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -153,11 +181,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                     </SidebarMenuItem>
                   ))}
                   <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <a href="/api/logout" data-testid="button-logout">
-                        <LogOut className="w-4 h-4" />
-                        <span>Logout</span>
-                      </a>
+                    <SidebarMenuButton onClick={handleLogout} data-testid="button-logout">
+                      <LogOut className="w-4 h-4" />
+                      <span>Logout</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 </SidebarMenu>

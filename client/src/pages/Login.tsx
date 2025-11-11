@@ -1,13 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogIn, Camera } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Camera, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest, queryClient } from "@/lib/queryClient";
 
 export default function Login() {
   const { isAuthenticated, isLoading } = useAuth();
   const [, setLocation] = useLocation();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { toast } = useToast();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -15,8 +23,39 @@ export default function Login() {
     }
   }, [isAuthenticated, setLocation]);
 
-  const handleLogin = () => {
-    window.location.href = "/api/login";
+  const loginMutation = useMutation({
+    mutationFn: async (credentials: { username: string; password: string }) => {
+      const response = await apiRequest("POST", "/api/login", credentials);
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/auth/user"] });
+      toast({
+        title: "Login successful",
+        description: "Welcome back!",
+      });
+      setLocation("/admin");
+    },
+    onError: (error: Error) => {
+      toast({
+        variant: "destructive",
+        title: "Login failed",
+        description: error.message,
+      });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!username || !password) {
+      toast({
+        variant: "destructive",
+        title: "Missing credentials",
+        description: "Please enter both username and password",
+      });
+      return;
+    }
+    loginMutation.mutate({ username, password });
   };
 
   if (isLoading) {
@@ -41,19 +80,51 @@ export default function Login() {
             </CardDescription>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="text-center text-sm text-muted-foreground mb-6">
-            Sign in to access the admin dashboard and manage your photography portfolio
-          </div>
-          <Button 
-            onClick={handleLogin}
-            className="w-full"
-            size="lg"
-            data-testid="button-login"
-          >
-            <LogIn className="mr-2 h-5 w-5" />
-            Login with Replit
-          </Button>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="username">Username</Label>
+              <Input
+                id="username"
+                type="text"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                disabled={loginMutation.isPending}
+                data-testid="input-username"
+                autoComplete="username"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={loginMutation.isPending}
+                data-testid="input-password"
+                autoComplete="current-password"
+              />
+            </div>
+            <Button 
+              type="submit"
+              className="w-full"
+              size="lg"
+              disabled={loginMutation.isPending}
+              data-testid="button-login"
+            >
+              {loginMutation.isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Logging in...
+                </>
+              ) : (
+                "Login"
+              )}
+            </Button>
+          </form>
           <div className="text-center text-xs text-muted-foreground pt-4">
             Admin and Editor access only
           </div>
