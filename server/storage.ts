@@ -40,6 +40,7 @@ import {
 export interface IStorage {
   // User operations (required for Replit Auth)
   getUser(id: string): Promise<User | undefined>;
+  getAllUsers(): Promise<User[]>;
   upsertUser(user: UpsertUser): Promise<User>;
   updateUserRole(id: string, role: "admin" | "editor" | "viewer"): Promise<User | undefined>;
 
@@ -125,17 +126,34 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
+  async getAllUsers(): Promise<User[]> {
+    return await db.select().from(users);
+  }
+
   async upsertUser(userData: UpsertUser): Promise<User> {
+    // Check if user exists by ID or email
+    const existingById = userData.id ? await db.select().from(users).where(eq(users.id, userData.id)).limit(1) : [];
+    const existingByEmail = userData.email ? await db.select().from(users).where(eq(users.email, userData.email)).limit(1) : [];
+    
+    const existing = existingById[0] || existingByEmail[0];
+    
+    if (existing) {
+      // Update existing user
+      const [updated] = await db
+        .update(users)
+        .set({
+          ...userData,
+          updatedAt: new Date(),
+        })
+        .where(eq(users.id, existing.id))
+        .returning();
+      return updated;
+    }
+    
+    // Insert new user
     const [user] = await db
       .insert(users)
       .values(userData)
-      .onConflictDoUpdate({
-        target: users.id,
-        set: {
-          ...userData,
-          updatedAt: new Date(),
-        },
-      })
       .returning();
     return user;
   }

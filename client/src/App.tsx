@@ -12,6 +12,7 @@ import Pricing from "@/pages/Pricing";
 import FAQ from "@/pages/FAQ";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Login from "@/pages/Login";
 import AdminDashboard from "@/pages/admin/Dashboard";
 import NotFound from "@/pages/not-found";
 
@@ -38,6 +39,7 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
 function Router() {
   const [location] = useLocation();
   const isAdminRoute = location.startsWith("/admin");
+  const isLoginRoute = location === "/login";
 
   // Admin routes don't get the public layout
   if (isAdminRoute) {
@@ -47,6 +49,11 @@ function Router() {
         <Route component={NotFound} />
       </Switch>
     );
+  }
+
+  // Login page doesn't get the public layout
+  if (isLoginRoute) {
+    return <Login />;
   }
 
   // Public routes get the marketing layout

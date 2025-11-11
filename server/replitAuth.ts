@@ -50,12 +50,36 @@ function updateUserSession(
 }
 
 async function upsertUser(claims: any) {
+  const userId = claims["sub"];
+  const existingUser = await storage.getUser(userId);
+  
+  // If user exists, just update their profile
+  if (existingUser) {
+    await storage.upsertUser({
+      id: userId,
+      email: claims["email"],
+      firstName: claims["first_name"],
+      lastName: claims["last_name"],
+      profileImageUrl: claims["profile_image_url"],
+      role: existingUser.role, // Keep existing role
+    });
+    return;
+  }
+  
+  // For new users, check if this is the first user
+  const allUsers = await storage.getAllUsers();
+  const isFirstUser = allUsers.length === 0;
+  
+  // First user gets admin role, others get viewer by default
+  const defaultRole = isFirstUser ? "admin" : "viewer";
+  
   await storage.upsertUser({
-    id: claims["sub"],
+    id: userId,
     email: claims["email"],
     firstName: claims["first_name"],
     lastName: claims["last_name"],
     profileImageUrl: claims["profile_image_url"],
+    role: defaultRole,
   });
 }
 
