@@ -1,9 +1,11 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
+import passport from "passport";
 import { storage } from "./storage";
-import { setupAuth, isAuthenticated, requireAdmin, requireEditor } from "./replitAuth";
+import { setupAuth, isAuthenticated, requireAdmin, requireEditor } from "./auth";
 import { upload } from "./middleware/upload";
-import { insertMediaSchema, insertGalleryItemSchema, insertServiceSchema, insertPricingPackageSchema, insertPackageFeatureSchema, insertFaqSchema, insertBlogPostSchema, insertTestimonialSchema, insertContactSubmissionSchema } from "@shared/schema";
+import { insertMediaSchema, insertGalleryItemSchema, insertServiceSchema, insertPricingPackageSchema, insertPackageFeatureSchema, insertFaqSchema, insertBlogPostSchema, insertTestimonialSchema, insertContactSubmissionSchema, loginSchema } from "@shared/schema";
+import type { User } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
@@ -13,15 +15,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // AUTH ROUTES
   // ============================================
 
-  app.get("/api/auth/user", isAuthenticated, async (req: any, res: Response) => {
+  // Login with username/password
+  app.post("/api/login", (req, res, next) => {
+    const validation = loginSchema.safeParse(req.body);
+    
+    if (!validation.success) {
+      return res.status(400).json({ message: "Invalid username or password" });
+    }
+
+    passport.authenticate("local", (err: any, user: User | false, info: any) => {
+      if (err) {
+        return res.status(500).json({ message: "Authentication error" });
+      }
+      
+      if (!user) {
+        return res.status(401).json({ message: info?.message || "Invalid credentials" });
+      }
+
+      req.logIn(user, (err) => {
+        if (err) {
+          return res.status(500).json({ message: "Login failed" });
+        }
+        
+        // Return user without sensitive data
+        const { hashedPassword, ...userWithoutPassword } = user;
+        return res.json({ user: userWithoutPassword });
+      });
+    })(req, res, next);
+  });
+
+  // Get current user
+  app.get("/api/auth/user", isAuthenticated, async (req, res: Response) => {
     try {
-      const userId = req.user.claims.sub;
-      const user = await storage.getUser(userId);
-      res.json(user);
+      const user = req.user as User;
+      const { hashedPassword, ...userWithoutPassword } = user;
+      res.json(userWithoutPassword);
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
     }
+  });
+
+  // Logout
+  app.post("/api/logout", (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).json({ message: "Logout failed" });
+      }
+      res.json({ message: "Logged out successfully" });
+    });
   });
 
   // ============================================
@@ -35,7 +77,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "No file uploaded" });
       }
 
-      const userId = (req as any).user.claims.sub;
+      const user = req.user as User;
       const { altText } = req.body;
 
       const mediaData = insertMediaSchema.parse({
@@ -47,7 +89,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         height: null,
         sizeBytes: req.file.size,
         mimeType: req.file.mimetype,
-        uploadedBy: userId,
+        uploadedBy: user.id,
         storageProvider: "local",
       });
 

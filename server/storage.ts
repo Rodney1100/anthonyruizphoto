@@ -38,11 +38,13 @@ import {
 // ============================================
 
 export interface IStorage {
-  // User operations (required for Replit Auth)
+  // User operations (required for authentication)
   getUser(id: string): Promise<User | undefined>;
+  getUserByUsername(username: string): Promise<User | undefined>;
   getAllUsers(): Promise<User[]>;
   upsertUser(user: UpsertUser): Promise<User>;
   updateUserRole(id: string, role: "admin" | "editor" | "viewer"): Promise<User | undefined>;
+  createLocalUser(username: string, hashedPassword: string, role: "admin" | "editor" | "viewer"): Promise<User>;
 
   // Media operations
   createMedia(media: InsertMedia): Promise<Media>;
@@ -163,6 +165,24 @@ export class DatabaseStorage implements IStorage {
       .update(users)
       .set({ role, updatedAt: new Date() })
       .where(eq(users.id, id))
+      .returning();
+    return user;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
+  }
+
+  async createLocalUser(username: string, hashedPassword: string, role: "admin" | "editor" | "viewer"): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values({
+        username,
+        hashedPassword,
+        role,
+        isActive: true,
+      })
       .returning();
     return user;
   }

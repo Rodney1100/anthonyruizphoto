@@ -42,6 +42,8 @@ export const sessions = pgTable(
 // Users table (enhanced for CMS with roles)
 export const users = pgTable("users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  username: varchar("username", { length: 50 }).unique(),
+  hashedPassword: varchar("hashed_password", { length: 255 }),
   email: varchar("email").unique(),
   firstName: varchar("first_name"),
   lastName: varchar("last_name"),
@@ -55,6 +57,12 @@ export const users = pgTable("users", {
 export const upsertUserSchema = createInsertSchema(users);
 export type UpsertUser = z.infer<typeof upsertUserSchema>;
 export type User = typeof users.$inferSelect;
+
+// Login schema for username/password authentication
+export const loginSchema = z.object({
+  username: z.string().min(3).max(50),
+  password: z.string().min(6),
+});
 
 // ============================================
 // MEDIA MANAGEMENT
