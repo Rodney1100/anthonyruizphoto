@@ -14,6 +14,13 @@ import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Login from "@/pages/Login";
 import AdminDashboard from "@/pages/admin/Dashboard";
+import GalleryManagement from "@/pages/admin/GalleryManagement";
+import ServicesManagement from "@/pages/admin/ServicesManagement";
+import PricingManagement from "@/pages/admin/PricingManagement";
+import BlogManagement from "@/pages/admin/BlogManagement";
+import FAQsManagement from "@/pages/admin/FAQsManagement";
+import TestimonialsManagement from "@/pages/admin/TestimonialsManagement";
+import ContactManagement from "@/pages/admin/ContactManagement";
 import NotFound from "@/pages/not-found";
 
 function PublicLayout({ children }: { children: React.ReactNode }) {
@@ -46,6 +53,13 @@ function Router() {
     return (
       <Switch>
         <Route path="/admin" component={AdminDashboard} />
+        <Route path="/admin/gallery" component={GalleryManagement} />
+        <Route path="/admin/services" component={ServicesManagement} />
+        <Route path="/admin/pricing" component={PricingManagement} />
+        <Route path="/admin/blog" component={BlogManagement} />
+        <Route path="/admin/faqs" component={FAQsManagement} />
+        <Route path="/admin/testimonials" component={TestimonialsManagement} />
+        <Route path="/admin/contact" component={ContactManagement} />
         <Route component={NotFound} />
       </Switch>
     );
