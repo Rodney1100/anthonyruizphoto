@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,20 +12,57 @@ import Pricing from "@/pages/Pricing";
 import FAQ from "@/pages/FAQ";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import AdminDashboard from "@/pages/admin/Dashboard";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/services" component={Services} />
-      <Route path="/gallery" component={Gallery} />
-      <Route path="/pricing" component={Pricing} />
-      <Route path="/faq" component={FAQ} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-foreground focus:text-background focus:px-6 focus:py-3 focus:rounded-md focus:font-bold focus:text-base focus:ring-4 focus:ring-white focus:ring-offset-2"
+      >
+        Skip to main content
+      </a>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main id="main-content" className="flex-1 pt-20" role="main">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}
+
+function Router() {
+  const [location] = useLocation();
+  const isAdminRoute = location.startsWith("/admin");
+
+  // Admin routes don't get the public layout
+  if (isAdminRoute) {
+    return (
+      <Switch>
+        <Route path="/admin" component={AdminDashboard} />
+        <Route component={NotFound} />
+      </Switch>
+    );
+  }
+
+  // Public routes get the marketing layout
+  return (
+    <PublicLayout>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/services" component={Services} />
+        <Route path="/gallery" component={Gallery} />
+        <Route path="/pricing" component={Pricing} />
+        <Route path="/faq" component={FAQ} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route component={NotFound} />
+      </Switch>
+    </PublicLayout>
   );
 }
 
@@ -33,19 +70,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-foreground focus:text-background focus:px-6 focus:py-3 focus:rounded-md focus:font-bold focus:text-base focus:ring-4 focus:ring-white focus:ring-offset-2"
-        >
-          Skip to main content
-        </a>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main id="main-content" className="flex-1 pt-20" role="main">
-            <Router />
-          </main>
-          <Footer />
-        </div>
+        <Router />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
