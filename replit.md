@@ -7,14 +7,15 @@ A luxury photography portfolio website with a comprehensive Content Management S
 **CMS Backend Completed:**
 - Database schema with PostgreSQL
 - Role-based authentication (Admin, Editor, Viewer)
+- Local username/password authentication with passport-local
 - Complete API endpoints for all CMS entities
 - Media upload system with multer
-- Replit Auth integration
 - Stripe payment integration (configured)
 
 **CMS Admin Panel Completed:**
 - Admin dashboard with sidebar navigation
 - Protected admin routes with role-based access
+- Login page with username/password form
 - Dashboard overview page with statistics
 - Complete CRUD interfaces for all 7 entities:
   - Gallery Management (with MediaPicker)
@@ -36,10 +37,11 @@ A luxury photography portfolio website with a comprehensive Content Management S
 - TypeScript
 - **PostgreSQL (Railway)** - Migrated from Replit to Railway
 - Drizzle ORM with `pg` driver
-- Replit Auth (OpenID Connect)
+- Passport.js with passport-local (username/password authentication)
+- Bcrypt (password hashing)
+- Express-session with PostgreSQL store (session management)
 - Multer (file uploads)
 - Stripe (payment processing)
-- Passport.js (authentication)
 
 ### Frontend
 - React
@@ -67,9 +69,8 @@ A luxury photography portfolio website with a comprehensive Content Management S
 ## API Endpoints
 
 ### Authentication
-- `GET /api/login` - Initiate login flow
-- `GET /api/callback` - OAuth callback
-- `GET /api/logout` - Logout user
+- `POST /api/login` - Login with username/password (accepts { username, password })
+- `POST /api/logout` - Logout user
 - `GET /api/auth/user` - Get current user (protected)
 
 ### Media (Admin/Editor)
@@ -177,7 +178,7 @@ server/
   ├── db.ts                 # Database connection
   ├── storage.ts            # Data access layer
   ├── routes.ts             # API routes
-  ├── replitAuth.ts         # Authentication setup
+  ├── auth.ts               # Passport-local authentication setup
   ├── middleware/
   │   └── upload.ts         # Multer configuration
   └── uploads/              # Uploaded files
@@ -186,6 +187,7 @@ client/src/
   ├── pages/
   │   ├── admin/
   │   │   └── Dashboard.tsx # Admin dashboard
+  │   ├── Login.tsx         # Login page with username/password form
   │   ├── Home.tsx
   │   ├── Services.tsx
   │   ├── Gallery.tsx
@@ -241,11 +243,15 @@ npm run dev
 ## Environment Variables
 - `DATABASE_PUBLIC_URL` - Railway PostgreSQL public connection (development/testing)
 - `DATABASE_URL` - Railway PostgreSQL private connection (production deployment)
-- `SESSION_SECRET` - Session encryption key
+- `SESSION_SECRET` - Session encryption key (required)
 - `REPL_ID` - Replit application ID
-- `ISSUER_URL` - OIDC issuer URL (defaults to Replit)
 - `STRIPE_SECRET_KEY` - Stripe secret key (not yet set)
 - `VITE_STRIPE_PUBLIC_KEY` - Stripe publishable key (not yet set)
+
+## Admin Credentials
+- **Username**: PhotoAdmin12
+- **Password**: PAdmin1@3
+- Admin user is automatically seeded on application startup
 
 ## Notes
 - Media files stored in `server/uploads/` (local development)
