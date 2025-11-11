@@ -118,10 +118,12 @@ export default function ServicesManagement() {
     }
   };
 
-  const handleDialogClose = () => {
-    setIsDialogOpen(false);
-    setEditingItem(null);
-    form.reset();
+  const handleDialogChange = (open: boolean) => {
+    setIsDialogOpen(open);
+    if (!open) {
+      setEditingItem(null);
+      form.reset();
+    }
   };
 
   if (isLoading) {
@@ -144,7 +146,7 @@ export default function ServicesManagement() {
             </h1>
             <p className="text-muted-foreground mt-2">Manage your service offerings</p>
           </div>
-          <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
+          <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
             <DialogTrigger asChild>
               <Button onClick={() => setIsDialogOpen(true)} data-testid="button-create-service">
                 <Plus className="w-4 h-4 mr-2" />
@@ -286,7 +288,7 @@ export default function ServicesManagement() {
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={handleDialogClose}
+                      onClick={() => handleDialogChange(false)}
                       data-testid="button-cancel"
                     >
                       Cancel

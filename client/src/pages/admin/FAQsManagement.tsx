@@ -107,10 +107,12 @@ export default function FAQsManagement() {
     }
   };
 
-  const handleDialogClose = () => {
-    setIsDialogOpen(false);
-    setEditingItem(null);
-    form.reset();
+  const handleDialogChange = (open: boolean) => {
+    setIsDialogOpen(open);
+    if (!open) {
+      setEditingItem(null);
+      form.reset();
+    }
   };
 
   if (isLoading) {
@@ -133,7 +135,7 @@ export default function FAQsManagement() {
             </h1>
             <p className="text-muted-foreground mt-2">Manage frequently asked questions</p>
           </div>
-          <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
+          <Dialog open={isDialogOpen} onOpenChange={handleDialogChange}>
             <DialogTrigger asChild>
               <Button onClick={() => setIsDialogOpen(true)} data-testid="button-create-faq">
                 <Plus className="w-4 h-4 mr-2" />
@@ -213,7 +215,7 @@ export default function FAQsManagement() {
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={handleDialogClose}
+                      onClick={() => handleDialogChange(false)}
                       data-testid="button-cancel"
                     >
                       Cancel
