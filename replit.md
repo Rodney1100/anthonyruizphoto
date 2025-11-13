@@ -244,7 +244,7 @@ npm run dev
 - `DATABASE_PUBLIC_URL` - Railway PostgreSQL public connection (development/testing)
 - `DATABASE_URL` - Railway PostgreSQL private connection (production deployment)
 - `SESSION_SECRET` - Session encryption key (required)
-- `REPL_ID` - Replit application ID
+- `REPL_ID` - Development environment identifier (optional, enables dev tools)
 - `STRIPE_SECRET_KEY` - Stripe secret key (not yet set)
 - `VITE_STRIPE_PUBLIC_KEY` - Stripe publishable key (not yet set)
 
