@@ -1,0 +1,117 @@
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:54:59.282482145Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:54:59.282490200Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:54:59.282493537Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:54:59.282496836Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:54:59.282502118Z"}
+{"message":"npm warn config production Use `--omit=dev` instead.","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:01.706799872Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:01.726776227Z"}
+{"message":"> rest-express@1.0.0 start","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:01.726783188Z"}
+{"message":"> NODE_ENV=production node dist/index.js","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:01.726790350Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:01.726797178Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415514946Z"}
+{"message":"file:///app/dist/index.js:311","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415517490Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415523481Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415530697Z"}
+{"message":"Error: DATABASE_URL must be set for production","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415561966Z"}
+{"message":"    at file:///app/dist/index.js:311:9","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415566961Z"}
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415571390Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415575578Z"}
+{"message":"    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415580250Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415584456Z"}
+{"message":"Node.js v22.21.1","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:02.415590745Z"}
+{"message":"npm warn config production Use `--omit=dev` instead.","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.341658010Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:04.341665437Z"}
+{"message":"> rest-express@1.0.0 start","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:04.341671674Z"}
+{"message":"> NODE_ENV=production node dist/index.js","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:04.341677588Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:04.341684074Z"}
+{"message":"file:///app/dist/index.js:311","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698614512Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698620865Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698626164Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698633259Z"}
+{"message":"Error: DATABASE_URL must be set for production","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698639098Z"}
+{"message":"    at file:///app/dist/index.js:311:9","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698644523Z"}
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698650084Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698656046Z"}
+{"message":"    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698662025Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698667997Z"}
+{"message":"Node.js v22.21.1","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:04.698675773Z"}
+{"message":"npm warn config production Use `--omit=dev` instead.","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.394994486Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:06.394999511Z"}
+{"message":"> rest-express@1.0.0 start","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:06.395004129Z"}
+{"message":"> NODE_ENV=production node dist/index.js","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:06.395013534Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:06.395019833Z"}
+{"message":"file:///app/dist/index.js:311","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780246151Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780251857Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780257249Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780266624Z"}
+{"message":"Error: DATABASE_URL must be set for production","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780271944Z"}
+{"message":"    at file:///app/dist/index.js:311:9","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780277996Z"}
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780282301Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780286147Z"}
+{"message":"    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780290635Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780294585Z"}
+{"message":"Node.js v22.21.1","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:06.780298649Z"}
+{"message":"npm warn config production Use `--omit=dev` instead.","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:07.785191239Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:07.813138738Z"}
+{"message":"> rest-express@1.0.0 start","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:07.813143684Z"}
+{"message":"> NODE_ENV=production node dist/index.js","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:07.813150584Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:07.813155426Z"}
+{"message":"file:///app/dist/index.js:311","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485802320Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485809143Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485814872Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485824464Z"}
+{"message":"Error: DATABASE_URL must be set for production","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485831495Z"}
+{"message":"    at file:///app/dist/index.js:311:9","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485837913Z"}
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485844128Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485851056Z"}
+{"message":"    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485858707Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485865209Z"}
+{"message":"Node.js v22.21.1","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:08.485871294Z"}
+{"message":"npm warn config production Use `--omit=dev` instead.","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:09.500908836Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:09.524704191Z"}
+{"message":"> rest-express@1.0.0 start","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:09.524711766Z"}
+{"message":"> NODE_ENV=production node dist/index.js","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:09.524718161Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:09.524723994Z"}
+{"message":"file:///app/dist/index.js:311","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215549981Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215555778Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215562886Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215568941Z"}
+{"message":"Error: DATABASE_URL must be set for production","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215574471Z"}
+{"message":"    at file:///app/dist/index.js:311:9","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215580580Z"}
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215588946Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215594212Z"}
+{"message":"    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215601175Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215608797Z"}
+{"message":"Node.js v22.21.1","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:10.215614280Z"}
+{"message":"npm warn config production Use `--omit=dev` instead.","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:11.366912871Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:11.366920204Z"}
+{"message":"> rest-express@1.0.0 start","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:11.367072881Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:11.367072943Z"}
+{"message":"> NODE_ENV=production node dist/index.js","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:11.367080343Z"}
+{"message":"file:///app/dist/index.js:311","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337844371Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337849215Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337855334Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337860147Z"}
+{"message":"Error: DATABASE_URL must be set for production","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337866616Z"}
+{"message":"    at file:///app/dist/index.js:311:9","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337870599Z"}
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337874684Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337878591Z"}
+{"message":"    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337882789Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337886742Z"}
+{"message":"Node.js v22.21.1","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:12.337891180Z"}
+{"message":"npm warn config production Use `--omit=dev` instead.","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:15.342379434Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:15.365321889Z"}
+{"message":"> rest-express@1.0.0 start","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:15.365327358Z"}
+{"message":"> NODE_ENV=production node dist/index.js","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:15.365331537Z"}
+{"message":"","attributes":{"level":"info"},"timestamp":"2025-11-13T20:55:15.365335877Z"}
+{"message":"    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413493611Z"}
+{"message":"    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413502529Z"}
+{"message":"    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413519167Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413524062Z"}
+{"message":"Node.js v22.21.1","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413528454Z"}
+{"message":"","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413536168Z"}
+{"message":"    at file:///app/dist/index.js:311:9","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413539362Z"}
+{"message":"        ^","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413548320Z"}
+{"message":"Error: DATABASE_URL must be set for production","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413548662Z"}
+{"message":"file:///app/dist/index.js:311","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413569292Z"}
+{"message":"  throw new Error(","attributes":{"level":"error"},"timestamp":"2025-11-13T20:55:16.413577986Z"}
