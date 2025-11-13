@@ -35,7 +35,7 @@ A luxury photography portfolio website with a comprehensive Content Management S
 ### Backend
 - Node.js + Express
 - TypeScript
-- **PostgreSQL (Railway)** - Migrated from Replit to Railway
+- **PostgreSQL (Railway)** - Production database
 - Drizzle ORM with `pg` driver
 - Passport.js with passport-local (username/password authentication)
 - Bcrypt (password hashing)
