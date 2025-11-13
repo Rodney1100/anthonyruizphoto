@@ -241,8 +241,9 @@ npm run dev
 7. Production deployment
 
 ## Environment Variables
-- `DATABASE_PUBLIC_URL` - Railway PostgreSQL public connection (development/testing)
-- `DATABASE_URL` - Railway PostgreSQL private connection (production deployment)
+- `DATABASE_PUBLIC_URL` - Railway PostgreSQL public connection (preferred for development/testing)
+- `DATABASE_URL` - Railway PostgreSQL private connection (preferred for production deployment)
+  - **Note**: The app will automatically fall back to the other if the preferred one is not available
 - `SESSION_SECRET` - Session encryption key (required)
 - `REPL_ID` - Development environment identifier (optional, enables dev tools)
 - `STRIPE_SECRET_KEY` - Stripe secret key (not yet set)
